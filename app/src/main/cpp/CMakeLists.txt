@@ -1,0 +1,6 @@
+cmake_minimum_required(VERSION 3.10)
+project(tenori C)
+add_library(tenori SHARED tenori_native.c)
+find_library(log-lib log)
+find_library(sles-lib OpenSLES)
+target_link_libraries(tenori ${log-lib} ${sles-lib} m)

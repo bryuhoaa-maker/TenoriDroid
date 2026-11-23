@@ -1,0 +1,21 @@
+apply plugin: 'com.android.application'
+android {
+    compileSdk 33
+    ndkVersion "23.2.8568313"
+    defaultConfig {
+        applicationId "com.hipster.tenoridroid"
+        minSdk 14
+        targetSdk 22
+        versionCode 3
+        versionName "3.0"
+        ndk { abiFilters 'armeabi-v7a' }
+        externalNativeBuild { cmake { cFlags "-O3 -ffast-math" } }
+    }
+    externalNativeBuild { cmake { path "src/main/cpp/CMakeLists.txt"; version "3.22.1" } }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    buildTypes { release { minifyEnabled false } }
+    lint { abortOnError false }
+}
